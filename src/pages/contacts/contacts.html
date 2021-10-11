@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Контакты</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Прокат спорт инвентаря</h2>
+  <div>
+    <a href="tel:88005553535"><ion-icon name="md-call"></ion-icon> 8 800 555 35 35</a>
+  </div>
+  <p>часы работы с {{openingHours.from}} до {{openingHours.to}}</p>
+  <p>{{openNow ? 'открыто' : 'закрыто'}}</p>
+</ion-content>

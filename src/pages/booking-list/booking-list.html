@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Список бронирований</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="booking-list-table">
+    <ion-list>
+      <ion-item *ngFor="let bookingItem of bookingList">
+        <div class="booking-list-table__item">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="booking-list-table__item-title">Товар</ion-col>
+              <ion-col>{{bookingItem.product}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="booking-list-table__item-title">Дата</ion-col>
+              <ion-col>{{bookingItem.booking.day}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="booking-list-table__item-title">Часы</ion-col>
+              <ion-col>
+                <span *ngFor="let hour of bookingItem.booking.hours">{{hour}}, </span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="booking-list-table__item-title">Сумма</ion-col>
+              <ion-col>{{bookingItem.cost}}</ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-icon (click)="deleteBooking(bookingItem)" class="booking-list-table__close-btn" name="close"></ion-icon>
+        </div>
+      </ion-item>
+    </ion-list>
+    <h2 *ngIf="bookingList && bookingList.length==0">Бронирований нет</h2>
+  </div>
+</ion-content>

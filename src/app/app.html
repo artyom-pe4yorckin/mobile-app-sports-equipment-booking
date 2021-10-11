@@ -1,0 +1,20 @@
+<ion-menu [content]="content" type="overlay">
+
+  <ion-header>
+
+    <ion-title>Pages</ion-title>
+
+  </ion-header>
+
+  <ion-content>
+    <!--вывод страниц в навигации-->
+    <ion-list>
+      <button ion-item *ngFor="let page of burgerMenuPages" (click)="openPage(page)">
+        {{page.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

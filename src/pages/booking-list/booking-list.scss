@@ -1,0 +1,18 @@
+page-booking-list {
+  .booking-list-table__item {
+    display: grid;
+    grid-template-columns: 1fr 50px;
+    margin-bottom: 1rem;
+  }
+
+  .booking-list-table__item-title {
+    color: gray;
+  }
+
+  .booking-list-table__close-btn {
+    font-size: 50px;
+    color: crimson;
+    display: flex;
+    justify-content: flex-end;
+  }
+}

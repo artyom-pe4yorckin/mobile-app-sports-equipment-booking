@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <!--кнопка меню (бургер)-->
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Инвентарь</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form class="filters">
+    <ion-item>
+      <ion-label>Тип</ion-label>
+      <ion-select [(ngModel)]="filterVal.type"
+                  cancelText="отмена"
+                  interface="action-sheet"
+                  (ionChange)="changeFilterVal()" name="type">
+        <ion-option *ngFor="let type of Object.keys(productType)" value="{{type}}">{{productType[type]}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Сезон</ion-label>
+      <ion-select [(ngModel)]="filterVal.season"
+                  cancelText="отмена"
+                  interface="action-sheet"
+                  (ionChange)="changeFilterVal()"
+                  name="season">
+        <ion-option *ngFor="let season of Object.keys(productSeason)"
+                    value="{{season}}">{{productSeason[season]}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>В наличии</ion-label>
+      <ion-checkbox name="availability" [(ngModel)]="filterVal.availability" (ionChange)="changeFilterVal()">
+      </ion-checkbox>
+    </ion-item>
+    <div class="filters__price">
+      <p class="filter__title">Цена</p>
+      <ion-item>
+        <ion-label floating>от</ion-label>
+        <ion-input type="number" min="0" [(ngModel)]="filterVal.price.min" (ionChange)="changeFilterVal()"
+                   name="price-min"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>до</ion-label>
+        <ion-input type="number"
+                   min="0"
+                   [(ngModel)]="filterVal.price.max"
+                   (ionChange)="changeFilterVal()"
+                   name="price-max"></ion-input>
+      </ion-item>
+    </div>
+  </form>
+  <div class="card-wrapper">
+    <card *ngFor="let prod of filteredProducts" [product]="prod" (click)="openProduct(prod)"></card>
+    <h2 *ngIf="filteredProducts.length==0">ничего не найдено</h2>
+  </div>
+</ion-content>

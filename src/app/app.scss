@@ -1,0 +1,33 @@
+html {
+  font-size: 15px;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  padding: 1em 2em;
+  background: green;
+  color: white;
+}
+
+button[disabled] {
+  background: #efefef;
+  color: black;
+}
+
+//Стили блоков ионика
+.action-sheet-button.action-sheet-cancel {
+  background: crimson;
+  color: white;
+}
+
+.action-sheet-md .action-sheet-button {
+  font-size: 1rem;
+  min-height: 50px;
+}
+
+ion-select {
+  max-width: 100%;
+}

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Форма бронирования</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form action="">
+    <ion-item>
+      <ion-label floating>Товар</ion-label>
+      <ion-input type="text" value="{{product.title}}" disabled></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Дата</ion-label>
+      <ion-input type="text" value="{{date}}" disabled></ion-input>
+    </ion-item>
+    <h2>Доступные для бронирования часы</h2>
+    <p>Выбирая час, вы бронируете его до следующего часа. Например, выбрав 9 часов вы забронируете {{product.title}} с 9
+       до 10</p>
+    <div class="hours">
+      <ion-item *ngFor="let hour of openingHourObj">
+        <ion-label>{{hour.value}}</ion-label>
+        <ion-checkbox *ngIf="!availableHours.includes(hour.value)" name="hour" color="dark" checked disabled></ion-checkbox>
+        <ion-checkbox *ngIf="availableHours.includes(hour.value)" name="hour" color="dark" (ionChange)="getCost()" [(ngModel)]="hour.checked"></ion-checkbox>
+      </ion-item>
+    </div>
+    <ion-item>
+      <ion-label floating>Сумма</ion-label>
+      <ion-input type="number" [value]="sum" disabled></ion-input>
+    </ion-item>
+    <button class="booking-form__book-btn" (click)="doBooking()" [disabled]="bookingTerm==0">забронировать</button>
+  </form>
+</ion-content>

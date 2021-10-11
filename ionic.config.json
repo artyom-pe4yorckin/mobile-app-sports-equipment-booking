@@ -1,0 +1,7 @@
+{
+  "name": "sportequipment",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

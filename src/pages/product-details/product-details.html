@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>О продукте</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="product">
+    <h1 class="product__title">{{product.title}}</h1>
+    <div class="product__img-price-wrapper">
+      <img class="product__img" src="{{product.img}}" alt="">
+      <p class="product__price">{{product.price}}р/час</p>
+      <p class="product__season">Сезон: {{productSeason[product.season]}}</p>
+      <p class="product__type">Тип: {{productType[product.type]}}</p>
+      <p class="product__availability">{{product.availability ? "в наличии" : "отсутствует"}}</p>
+      <ion-item>
+        <ion-label>Дата бронирования</ion-label>
+        <ion-datetime (ionChange)="validateBookingDate()"
+                      [(ngModel)]="bookingDate"
+                      [min]="minDate"
+                      cancelText="закрыть"
+                      doneText="Ок"
+                      displayFormat="DD MMMM YYYY"
+                      pickerFormat="DD MMMM YYYY"></ion-datetime>
+      </ion-item>
+    </div>
+  </div>
+  <button class="booking-btn" (click)="openBooking(this.product)" [disabled]="!bookingDate">забронировать</button>
+</ion-content>
